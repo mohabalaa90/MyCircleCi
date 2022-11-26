@@ -10,7 +10,7 @@ commands:
             curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
             unzip awscliv2.zip
             sudo ./aws/install
-            
+
   install_ansible:
     description: Install Ansible
     steps:
@@ -33,6 +33,21 @@ commands:
             # Use n version manager to use Node.js v13.8.0
             sudo npm install --global n
             sudo n 13.8.0
+  
+  destroy_environment:
+    description: Destroy back-end and front-end cloudformation stacks given a workflow ID.
+    parameters:
+      workflow_ID:
+        type: string
+        default: ${CIRCLE_WORKFLOW_ID:0:7}
+    steps:
+      - run:
+          name: Destroy environments
+          when: on_fail
+          command: |
+            aws cloudformation delete-stack --stack-name udapeople-backend-<< parameters.workflow_ID >>
+            aws s3 rm s3://udapeople-<<parameters.workflow_ID>> --recursive
+            aws cloudformation delete-stack --stack-name udapeople-frontend-<< parameters.workflow_ID >>
 
 #   revert-migrations:
 #     description: Revert the last migration if successfully run in the current workflow.
@@ -189,8 +204,8 @@ jobs:
               --filters "Name=tag:Name,Values=backend-${CIRCLE_WORKFLOW_ID:0:7}" \
               --query 'Reservations[*].Instances[*].PublicIpAddress' \
               --output text)
-            echo "http://$BACKEND_PUBLIC_IP:3030" >> .circleci/outputs/backend_url.txt
-            echo " " >> .circleci/ansible/inventory.txt
+            # echo "http://$BACKEND_PUBLIC_IP:3030" >> .circleci/outputs/backend_url.txt
+            # echo " " >> .circleci/ansible/inventory.txt
             echo "$BACKEND_PUBLIC_IP" >> .circleci/ansible/inventory.txt
             cat .circleci/ansible/inventory.txt
             # BACKEND_AWS_PUBLIC_IP=$(aws ec2 describe-instances \
@@ -206,6 +221,7 @@ jobs:
           paths:
             - project/.circleci/ansible/inventory.txt     
 
+      - destroy_environment
      
 
 #   configure-infrastructure:
