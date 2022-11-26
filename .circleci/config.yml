@@ -224,14 +224,14 @@ jobs:
       - destroy_environment
      
 
-configure-infrastructure:
+  configure-infrastructure:
     docker:
       - image: cimg/base:stable
     steps:
       - checkout
       - install_ansible
       - add_ssh_keys:
-          fingerprints: ["a9:34:2a:d8:11:69:1c:e4:80:b5:d7:4b:e0:84:49:7f"]
+          fingerprints: ["24:7a:3e:a5:ce:1e:c0:45:1d:38:4f:cb:b7:22:9d:a8"]
       - attach_workspace:
           at: ~/
       # - run:
