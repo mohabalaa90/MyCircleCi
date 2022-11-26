@@ -69,13 +69,13 @@ jobs:
           key: backend-deps
       # - notify_on_failure
 
-  test-frontend:
-    docker:
-      # Docker image here
-    steps:
-      # Checkout code from git
-      # Restore from cache
-      # Your job code here
+  # test-frontend:
+  #   docker:
+  #     # Docker image here
+  #   steps:
+  #     # Checkout code from git
+  #     # Restore from cache
+  #     # Your job code here
                 
 #   test-backend:
 #     docker:
