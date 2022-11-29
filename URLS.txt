@@ -1,0 +1,15 @@
+
+1-Github repo
+https://github.com/mohabalaa90/MyCircleCi
+
+2- S3 Bucket
+udapepolex08.s3-website-us-east-1.amazonaws.com
+
+3- CloudFront
+d23bgpp850k8ty.cloudfront.net
+
+4- Prometheus-Server Instance
+ec2-52-87-128-29.compute-1.amazonaws.com
+
+5- Backend Instance
+ec2-52-23-43-90.compute-1.amazonaws.com
