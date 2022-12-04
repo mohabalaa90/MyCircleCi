@@ -3,13 +3,13 @@
 https://github.com/mohabalaa90/MyCircleCi
 
 2- S3 Bucket
-udapepolex08.s3-website-us-east-1.amazonaws.com
+udapeople-0cbc7bd.s3-website-us-east-1.amazonaws.com
 
 3- CloudFront
 d23bgpp850k8ty.cloudfront.net
 
 4- Prometheus-Server Instance
-ec2-18-212-59-31.compute-1.amazonaws.com
+ec2-54-159-235-36.compute-1.amazonaws.com
 
 5- Backend Instance
 ec2-52-23-43-90.compute-1.amazonaws.com
