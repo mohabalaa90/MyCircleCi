@@ -75,6 +75,7 @@ jobs:
       - image: cimg/base:stable
     steps:
       - checkout
+      - install_nodejs
       - restore_cache:
           keys: [frontend-deps]
       - run:
@@ -93,6 +94,7 @@ jobs:
       - image: cimg/base:stable
     steps:
       - checkout
+      - install_nodejs
       - restore_cache:
           keys: [backend-deps]
       - run:
